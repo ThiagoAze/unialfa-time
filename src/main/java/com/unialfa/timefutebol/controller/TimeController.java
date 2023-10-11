@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TimeController {
 
+    private static final String FORMULARIO_BOASVINDAS = "Luv2Mob - Formulário de Times";
+    private static final String LISTA_BOASVINDAS = "Luv2Mob - Lista de Times";
     @Autowired
     private TimeService service;
 
     @RequestMapping("/")
     public String iniciar(Time time, Model model){
-        model.addAttribute("boasVindas", "UniALFA - Formulário");
+        model.addAttribute("boasVindas", FORMULARIO_BOASVINDAS);
         return "formulario";
     }
 
@@ -30,14 +32,14 @@ public class TimeController {
 
     @GetMapping("lista")
     public String listar(Model model){
-        model.addAttribute("boasVindas", "UniALFA - Lista de Clubes");
+        model.addAttribute("boasVindas", LISTA_BOASVINDAS);
         model.addAttribute("listaTimes",service.listarTodos());
         return "lista";
     }
 
     @GetMapping("alterar/{id}")
     public String alterar(@PathVariable Integer id, Model model){
-        model.addAttribute("boasVindas", "UniALFA - Formulário");
+        model.addAttribute("boasVindas", FORMULARIO_BOASVINDAS);
         model.addAttribute("time", service.buscarPorId(id));
         return "formulario";
     }

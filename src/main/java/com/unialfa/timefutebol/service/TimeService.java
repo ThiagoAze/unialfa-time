@@ -21,7 +21,9 @@ public class TimeService {
             var oldTime = buscarPorId(time.getId());
             var index = times.indexOf(time);
             times.get(index).setNome(time.getNome());
-
+            times.get(index).setAnoFundacao(time.getAnoFundacao());
+            times.get(index).setEstado(time.getEstado());
+            times.get(index).setTitulo(time.getTitulo());
         }
     }
 
