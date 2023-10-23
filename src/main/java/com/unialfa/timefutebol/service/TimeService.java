@@ -30,4 +30,9 @@ public class TimeService {
     public void remover(Time time){
         timeRepository.delete(time);
     }
+
+    public Time listarPorId(Integer id) {
+        return timeRepository.findById(id).get();
+
+    }
 }
