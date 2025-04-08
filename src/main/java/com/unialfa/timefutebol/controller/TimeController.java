@@ -11,42 +11,44 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("time")
 public class TimeController {
 
-    private static final String FORMULARIO_BOASVINDAS = "Luv2Mob - Formulário de Times";
-    private static final String LISTA_BOASVINDAS = "Luv2Mob - Lista de Times";
+    private static final String FORMULARIO_BOASVINDAS = "UniALFA - Formulário de Times";
+    private static final String LISTA_BOASVINDAS = "UniALFA - Lista de Times";
+
     @Autowired
     private TimeService service;
 
-    @RequestMapping("/")
-    public String iniciar(Time time, Model model){
+    @RequestMapping("novo")
+    public String iniciar(Time time, Model model) {
         model.addAttribute("boasVindas", FORMULARIO_BOASVINDAS);
-        return "formulario";
+        return "time/formulario";
     }
 
     @PostMapping("salvar")
-    public String salvar(Time time, Model model){
+    public String salvar(Time time, Model model) {
         service.salvarTime(time);
-        return "redirect:/lista";
+        return "redirect:/time/listar";
     }
 
-    @GetMapping("lista")
-    public String listar(Model model){
+    @GetMapping("listar")
+    public String listar(Model model) {
         model.addAttribute("boasVindas", LISTA_BOASVINDAS);
-        model.addAttribute("listaTimes",service.listarTodos());
-        return "lista";
+        model.addAttribute("listaTimes", service.listarTodos());
+        return "time/lista";
     }
 
     @GetMapping("alterar/{id}")
-    public String alterar(@PathVariable Integer id, Model model){
+    public String alterar(@PathVariable Integer id, Model model) {
         model.addAttribute("boasVindas", FORMULARIO_BOASVINDAS);
         model.addAttribute("time", service.buscarPorId(id));
-        return "formulario";
+        return "time/formulario";
     }
 
     @PostMapping("remover")
-    public String remover(Time time, Model model){
+    public String remover(Time time, Model model) {
         service.remover(time);
-        return "redirect:/lista";
+        return "redirect:/time/listar";
     }
 }
