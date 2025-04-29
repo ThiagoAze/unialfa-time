@@ -18,8 +18,11 @@
             <label for="anoId" class="form-label">Ano Fundação</label>
             <input name="anoFundacao" th:value="${time.anoFundacao}" type="text" class="form-control" id="anoId">
 
-            <label for="estadoId" class="form-label">Estado</label>
-            <input name="estado" th:value="${time.estado}" type="text" class="form-control" id="estadoId">
+            <label for="cidadeId" class="form-label">Cidade</label>
+            <select id="cidadeId" th:field="${time.cidade.id}" class="form-control">
+                <option value="" selected="selected">Selecione...</option>
+                <option th:each="cidade: ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome + ' - ' + cidade.uf}"></option>
+            </select>
 
             <label for="tituloId" class="form-label">Titulos</label>
             <input name="titulo" th:value="${time.titulo}" type="text" class="form-control" id="tituloId">

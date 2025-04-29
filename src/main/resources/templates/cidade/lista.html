@@ -10,24 +10,20 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome Clube</th>
-            <th scope="col">Ano Fundação</th>
+            <th scope="col">ID</th>
             <th scope="col">Cidade</th>
-            <th scope="col">Titulos</th>
+            <th scope="col">UF</th>
             <th scope="col">#</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="time : ${listaTimes}">
-            <th th:text="${time.id}"></th>
-            <td th:text="${time.nome}"></td>
-            <td th:text="${time.anoFundacao}"></td>
-            <td th:text="${time.cidade.nome}"></td>
-            <td th:text="${time.titulo}"></td>
+        <tr th:each="cidade : ${listaCidades}">
+            <th th:text="${cidade.id}"></th>
+            <td th:text="${cidade.nome}"></td>
+            <td th:text="${cidade.uf}"></td>
             <td>
-                <a th:href="@{'/time/alterar/' + ${time.id}}" type="button" class="btn btn-warning">Alterar</a>
-                <a th:href="@{'/time/remover/' + ${time.id}}" type="button" class="btn btn-danger">Remover</a>
+                <a th:href="@{'/cidade/alterar/' + ${cidade.id}}" type="button" class="btn btn-warning">Alterar</a>
+                <a th:href="@{'/cidade/remoer/' + ${cidade.id}}" type="button" class="btn btn-danger">Remover</a>
             </td>
         </tr>
         </tbody>

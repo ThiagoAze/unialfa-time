@@ -27,8 +27,8 @@ public class TimeService {
         return timeRepository.findById(id).get();
     }
 
-    public void remover(Time time){
-        timeRepository.delete(time);
+    public void remover(Integer id){
+        timeRepository.deleteById(id);
     }
 
     public Time listarPorId(Integer id) {
