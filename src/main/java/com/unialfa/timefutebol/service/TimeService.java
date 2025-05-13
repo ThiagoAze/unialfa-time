@@ -4,10 +4,9 @@ import com.unialfa.timefutebol.model.Time;
 import com.unialfa.timefutebol.repositoy.TimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class TimeService {
@@ -15,6 +14,7 @@ public class TimeService {
     @Autowired
     private TimeRepository timeRepository;
 
+    @Transactional
     public void salvarTime(Time time) {
         timeRepository.save(time);
     }
@@ -27,7 +27,7 @@ public class TimeService {
         return timeRepository.findById(id).get();
     }
 
-    public void remover(Integer id){
+    public void remover(Integer id) {
         timeRepository.deleteById(id);
     }
 
