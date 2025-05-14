@@ -9,13 +9,6 @@
     <h1><span th:text="${boasVindas}"></span></h1>
 
     <form>
-        <div class="alert alert-danger"
-             th:if="${not #strings.isEmpty(erros)}">
-            <div th:each="erro : ${erros}">
-                <span th:text="${erro.getDefaultMessage()}"></span>
-            </div>
-        </div>
-
         <div class="mb-3">
             <input name="id" th:value="${time.id}" type="text" hidden="true">
 
@@ -26,10 +19,9 @@
             <input name="anoFundacao" th:value="${time.anoFundacao}" type="text" class="form-control" id="anoId">
 
             <label for="cidadeId" class="form-label">Cidade</label>
-            <select id="cidadeId" th:field="${time.cidade.id}" class="form-control">
-                <option value="" selected="selected">Selecione...</option>
-                <option th:each="cidade: ${cidades}" th:value="${cidade.id}"
-                        th:text="${cidade.nome + ' - ' + cidade.uf}"></option>
+            <select id="cidadeId" th:field="${time.cidade.id}" class="form-control" required>
+                <option value="" selected="selected" disabled>Selecione...</option>
+                <option th:each="cidade: ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome + ' - ' + cidade.uf}"></option>
             </select>
 
             <label for="tituloId" class="form-label">Titulos</label>
